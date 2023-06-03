@@ -17,7 +17,7 @@ const loginService = async (body: iLoginRequest): Promise<string> => {
   if (!passwordMatch) throw new AppError("Invalid credentials", 401);
 
   const token: string = jwt.sign(
-    { admin: user.admin },
+    { email: user.email },
     process.env.SECRET_KEY!,
     {
       expiresIn: "24h",
